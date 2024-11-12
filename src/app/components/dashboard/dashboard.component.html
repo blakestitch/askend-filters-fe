@@ -1,0 +1,8 @@
+<mat-list>
+  @for (filter of filters; track filters) {
+    <mat-list-item>
+      <app-filter-view [filter]="filter"></app-filter-view>
+    </mat-list-item>
+  }
+</mat-list>
+

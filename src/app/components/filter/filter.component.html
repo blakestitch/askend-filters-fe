@@ -1,0 +1,49 @@
+<h3>FilterModel</h3>
+<mat-form-field>
+  <mat-label>Name</mat-label>
+  <input
+    matInput
+    [required]="true"
+  >
+</mat-form-field>
+<br>
+<h3>Criteria</h3>
+<mat-form-field>
+  <mat-label>Type</mat-label>
+  <mat-select>
+    <mat-option value="AMOUNT">Amount</mat-option>
+    <mat-option value="TITLE">Title</mat-option>
+    <mat-option value="DATE">Date</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Condition</mat-label>
+  <mat-select>
+    <mat-option value="MORE_THAN">Amount</mat-option>
+    <mat-option value="LESS_THAN">Less Than</mat-option>
+    <mat-option value="EQUALS">Equals</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Numeric value</mat-label>
+  <input
+    matInput
+    type="number"
+  >
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Text value</mat-label>
+  <input
+    matInput
+  >
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Date value</mat-label>
+  <input matInput [matDatepicker]="picker">
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

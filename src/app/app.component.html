@@ -1,0 +1,11 @@
+<button mat-flat-button *ngIf="modalToggle" (click)="openDialog()">Create new</button>
+<button mat-flat-button  *ngIf="!modalToggle" (click)="showNewFilter = true">Create ssss</button>
+<button mat-stroked-button (click)="showAllFilters = true">Show all</button>
+<mat-slide-toggle [(ngModel)]="modalToggle">Modal</mat-slide-toggle>
+
+<filter *ngIf="showNewFilter"></filter>
+
+<div *ngIf="showAllFilters">
+  hello
+  <app-dashboard [filters]="filters"></app-dashboard>
+</div>

@@ -1,0 +1,22 @@
+<span>
+  FilterModel name: {{ filter.name }}
+</span>
+<br>
+Criteria:
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Comparing condition</th>
+    <th>Value</th>
+  </tr>
+    <tr>
+      @for (criteria of filter.criterias; track filter) {
+        <td>{{ criteria.type }}</td>
+        <td>{{ criteria.comparingCondition }}</td>
+        <td>{{ criteria.value }}</td>
+      }
+    </tr>
+  <tbody>
+
+  </tbody>
+</table>
