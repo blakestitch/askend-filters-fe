@@ -1,6 +1,6 @@
 # Askend test exercise - frontend
 
-Prerequisites: Node v22
+Prerequisite: Node v22
 
 Run with Node 
 ```
