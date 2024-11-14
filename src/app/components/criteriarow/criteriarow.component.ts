@@ -69,7 +69,7 @@ export class CriteriarowComponent implements OnInit {
   }
 
   private makeAmountAsDefaultType() {
-    this.adaptToTypeChange(CriteriaType.TITLE);
+    this.adaptToTypeChange(CriteriaType.AMOUNT);
   }
 
   protected adaptToTypeChange(newType: string) {
