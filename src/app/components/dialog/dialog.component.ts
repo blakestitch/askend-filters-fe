@@ -1,7 +1,7 @@
-import {Component, inject, model} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {Component, inject} from '@angular/core';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {FilterComponent} from '../filter/filter.component';
-import {FilterModel} from '../../models/filter.model';
+import {CriteriaMetadataResource} from '../../services/criteria.metadata.resource.module';
 
 @Component({
   selector: 'app-dialog',
@@ -9,11 +9,8 @@ import {FilterModel} from '../../models/filter.model';
   imports: [
     FilterComponent
   ],
-  templateUrl: './dialog.component.html',
-  styleUrl: './dialog.component.css'
+  templateUrl: './dialog.component.html'
 })
 export class DialogComponent {
-  readonly dialogRef = inject(MatDialogRef<DialogComponent>);
-  readonly data = inject<FilterModel>(MAT_DIALOG_DATA);
-
+  protected readonly criteriasMetadata: CriteriaMetadataResource[] = inject<CriteriaMetadataResource[]>(MAT_DIALOG_DATA);
 }

@@ -1,4 +1,4 @@
-export interface FilterMetadata {
+export interface CriteriaMetadataResource {
   criteriaType: string
   comparingConditions: string[]
 }

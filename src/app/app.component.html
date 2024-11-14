@@ -1,11 +1,23 @@
-<button mat-flat-button *ngIf="modalToggle" (click)="openDialog()">Create new</button>
-<button mat-flat-button  *ngIf="!modalToggle" (click)="showNewFilter = true">Create ssss</button>
-<button mat-stroked-button (click)="showAllFilters = true">Show all</button>
-<mat-slide-toggle [(ngModel)]="modalToggle">Modal</mat-slide-toggle>
-
-<filter *ngIf="showNewFilter"></filter>
-
-<div *ngIf="showAllFilters">
-  hello
-  <app-dashboard [filters]="filters"></app-dashboard>
+<div class="modal-slide">
+  <mat-slide-toggle [(ngModel)]="modalToggle">Modal</mat-slide-toggle>
 </div>
+
+<div class="buttons">
+  @if (modalToggle) {
+    <button mat-flat-button (click)="openDialog()">Create new</button>
+  }
+
+  @if (!modalToggle) {
+    <button mat-flat-button (click)="showNewFilter = true">Create new</button>
+  }
+  <button class="" mat-stroked-button (click)="showAllFilters = true">Show all</button>
+</div>
+
+@if (showNewFilter) {
+  <app-filter [criteriasMetadata]="filterMetadataResources"></app-filter>
+}
+
+@if (showAllFilters) {
+  <app-dashboard></app-dashboard>
+}
+

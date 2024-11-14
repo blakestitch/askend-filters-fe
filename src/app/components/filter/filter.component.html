@@ -1,49 +1,27 @@
-<h3>FilterModel</h3>
+<h4>Filter</h4>
 <mat-form-field>
   <mat-label>Name</mat-label>
   <input
     matInput
     [required]="true"
-  >
-</mat-form-field>
-<br>
-<h3>Criteria</h3>
-<mat-form-field>
-  <mat-label>Type</mat-label>
-  <mat-select>
-    <mat-option value="AMOUNT">Amount</mat-option>
-    <mat-option value="TITLE">Title</mat-option>
-    <mat-option value="DATE">Date</mat-option>
-  </mat-select>
-</mat-form-field>
-
-<mat-form-field>
-  <mat-label>Condition</mat-label>
-  <mat-select>
-    <mat-option value="MORE_THAN">Amount</mat-option>
-    <mat-option value="LESS_THAN">Less Than</mat-option>
-    <mat-option value="EQUALS">Equals</mat-option>
-  </mat-select>
-</mat-form-field>
-
-<mat-form-field>
-  <mat-label>Numeric value</mat-label>
-  <input
-    matInput
-    type="number"
+    [formControl]="name"
   >
 </mat-form-field>
 
-<mat-form-field>
-  <mat-label>Text value</mat-label>
-  <input
-    matInput
-  >
-</mat-form-field>
+<h5>Criteria</h5>
 
-<mat-form-field>
-  <mat-label>Date value</mat-label>
-  <input matInput [matDatepicker]="picker">
-  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
+@for (criteria of criterias.controls; track criteria; let idx = $index) {
+  <div class="criteria-container">
+    <app-criteriarow [criteriaForm]="criteria" [idx]="idx" (removeRow)="removeRow($event)"
+                     [criteriasMetadata]="criteriasMetadata"></app-criteriarow>
+  </div>
+}
+
+<div>
+  <button mat-icon-button (click)="addRow()">
+    <mat-icon fontIcon="add"></mat-icon>
+  </button>
+</div>
+<div class="create-button">
+  <button mat-flat-button type="submit" [disabled]="!filterForm.valid" (click)="submitFilter()">Create</button>
+</div>

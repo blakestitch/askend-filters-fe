@@ -1,7 +1,25 @@
-<mat-list>
-  @for (filter of filters; track filters) {
+<mat-list id="dash">
+  @for (filter of filters$ | async; track filter) {
     <mat-list-item>
-      <app-filter-view [filter]="filter"></app-filter-view>
+    <span>
+      <b>Filter Name</b>: {{ filter.name }}
+    </span>
+      <table>
+        <thead>
+        <th>Criteria Type</th>
+        <th>Comparing Condition</th>
+        <th>Value</th>
+        </thead>
+        <tbody>
+          @for (criteria of filter.criterias; track criteria) {
+            <tr>
+              <td>{{ criteria.type }}</td>
+              <td>{{ criteria.comparingCondition }}</td>
+              <td>{{ criteria.value }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
     </mat-list-item>
   }
 </mat-list>

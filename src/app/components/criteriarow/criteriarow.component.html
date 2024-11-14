@@ -1,0 +1,54 @@
+<mat-form-field>
+  <mat-label>Type</mat-label>
+  <mat-select required [formControl]="type" (selectionChange)="adaptToTypeChange($event.value)">
+    @for (metadata of criteriasMetadata; track metadata) {
+      <mat-option value="{{metadata.criteriaType}}">{{ metadata.criteriaType }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Comparing condition</mat-label>
+  <mat-select required [formControl]="comparingCondition">
+    @for (comparingCondition of currentComparingConditions; track $index) {
+      <mat-option value="{{comparingCondition}}">{{ comparingCondition }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+
+
+@if (type.value === CriteriaType.AMOUNT) {
+  <mat-form-field>
+    <mat-label>Numeric value</mat-label>
+    <input
+      [formControl]="value"
+      required
+      matInput
+      type="number"
+    >
+  </mat-form-field>
+}
+
+@if (type.value === CriteriaType.TITLE) {
+  <mat-form-field>
+    <mat-label>Text value</mat-label>
+    <input
+      [formControl]="value"
+      required
+      matInput
+    >
+  </mat-form-field>
+}
+
+@if (type.value === CriteriaType.DATE) {
+  <mat-form-field>
+    <mat-label>Date value</mat-label>
+    <input matInput required [formControl]="value" [matDatepicker]="picker">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+}
+
+<button (click)="removeRow.emit(idx)" mat-icon-button>
+  <mat-icon fontIcon="remove"></mat-icon>
+</button>

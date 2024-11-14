@@ -1,7 +1,9 @@
-import {Component, Input} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {MatList, MatListItem} from '@angular/material/list';
-import {FilterViewComponent} from '../filter-view/filter-view.component';
-import {FilterModel} from '../../models/filter.model';
+import {Observable} from 'rxjs';
+import {FilterResource} from '../../services/filter.resource.module';
+import {AsyncPipe} from '@angular/common';
+import {FilterService} from '../../services/filter.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,14 +11,18 @@ import {FilterModel} from '../../models/filter.model';
   imports: [
     MatListItem,
     MatList,
-    FilterViewComponent
+    AsyncPipe,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
 
-  @Input({required: true})
-  filters: FilterModel[] = [];
+  private readonly filterService = inject(FilterService)
 
+  protected filters$!: Observable<FilterResource[]>
+
+  ngOnInit(): void {
+    this.filters$ = this.filterService.getAllFilters();
+  }
 }

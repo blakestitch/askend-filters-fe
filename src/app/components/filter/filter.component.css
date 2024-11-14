@@ -1,0 +1,9 @@
+.criteria-container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.create-button {
+  margin-top: 60px;
+}

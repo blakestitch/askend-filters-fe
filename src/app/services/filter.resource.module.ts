@@ -1,4 +1,4 @@
-export interface FilterModel {
+export interface FilterResource {
   name: string;
   criterias: Criteria[]
 }
@@ -8,5 +8,3 @@ export interface Criteria {
   comparingCondition: string;
   value: string;
 }
-
-
